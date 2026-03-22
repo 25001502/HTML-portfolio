@@ -5,13 +5,26 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Thandululo Nengovhela</title>
-
-
-  <link href="https://cdn.jsdelivr.net/npm/daisyui@latest/dist/full.css" rel="stylesheet" />
-  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
 
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
     html {
       scroll-behavior: smooth;
     }
@@ -19,6 +32,7 @@
     body {
       margin: 0;
       min-height: 100vh;
+      font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
 
 
       background-color: #0f0f0f;
@@ -37,7 +51,7 @@
       margin-top: 0.5rem;
       font-weight: 700;
       line-height: 1.2;
-      font-family: "Inter", system-ui, sans-serif;
+      font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
       font-size: 1.75rem;           /* Mobile: ~28px */
       animation: fadeUp 0.6s ease-out both;
       color: aliceblue;
@@ -152,6 +166,450 @@
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
+    }
+
+    .mx-auto { margin-left: auto; margin-right: auto; }
+    .max-w-7xl { max-width: 80rem; }
+    .max-w-xl { max-width: 36rem; }
+    .w-full { width: 100%; }
+    .w-52 { width: 13rem; }
+    .w-24 { width: 6rem; }
+    .w-12 { width: 3rem; }
+    .w-10 { width: 2.5rem; }
+    .w-16 { width: 4rem; }
+    .w-7 { width: 1.75rem; }
+    .w-5 { width: 1.25rem; }
+    .h-1 { height: 0.25rem; }
+    .h-5 { height: 1.25rem; }
+    .h-7 { height: 1.75rem; }
+    .h-10 { height: 2.5rem; }
+    .h-12 { height: 3rem; }
+    .h-16 { height: 4rem; }
+    .h-28 { height: 7rem; }
+    .h-36 { height: 9rem; }
+    .min-h-screen { min-height: 100vh; }
+
+    .block { display: block; }
+    .hidden { display: none; }
+    .flex { display: flex; }
+    .grid { display: grid; }
+    .flex-col { flex-direction: column; }
+    .flex-1 { flex: 1 1 0%; }
+    .items-center { align-items: center; }
+    .items-start { align-items: flex-start; }
+    .items-end { align-items: flex-end; }
+    .justify-center { justify-content: center; }
+    .justify-start { justify-content: flex-start; }
+    .justify-between { justify-content: space-between; }
+    .text-center { text-align: center; }
+    .text-right { text-align: right; }
+    .grid-cols-1 { grid-template-columns: repeat(1, minmax(0, 1fr)); }
+    .grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .gap-1 { gap: 0.25rem; }
+    .gap-2 { gap: 0.5rem; }
+    .gap-3 { gap: 0.75rem; }
+    .gap-4 { gap: 1rem; }
+    .gap-8 { gap: 2rem; }
+    .space-y-4 > * + * { margin-top: 1rem; }
+
+    .p-2 { padding: 0.5rem; }
+    .p-3 { padding: 0.75rem; }
+    .p-4 { padding: 1rem; }
+    .p-5 { padding: 1.25rem; }
+    .px-1 { padding-left: 0.25rem; padding-right: 0.25rem; }
+    .px-2 { padding-left: 0.5rem; padding-right: 0.5rem; }
+    .px-3 { padding-left: 0.75rem; padding-right: 0.75rem; }
+    .px-4 { padding-left: 1rem; padding-right: 1rem; }
+    .py-6 { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+    .py-12 { padding-top: 3rem; padding-bottom: 3rem; }
+    .pt-3 { padding-top: 0.75rem; }
+    .pt-10 { padding-top: 2.5rem; }
+    .mb-1 { margin-bottom: 0.25rem; }
+    .mb-2 { margin-bottom: 0.5rem; }
+    .mb-4 { margin-bottom: 1rem; }
+    .mb-6 { margin-bottom: 1.5rem; }
+    .mb-10 { margin-bottom: 2.5rem; }
+    .mt-0\.5 { margin-top: 0.125rem; }
+    .mt-1 { margin-top: 0.25rem; }
+    .mt-3 { margin-top: 0.75rem; }
+    .mt-4 { margin-top: 1rem; }
+    .mt-6 { margin-top: 1.5rem; }
+    .ml-2 { margin-left: 0.5rem; }
+
+    .rounded { border-radius: 0.25rem; }
+    .rounded-lg { border-radius: 0.5rem; }
+    .rounded-xl { border-radius: 0.75rem; }
+    .rounded-full { border-radius: 9999px; }
+    .rounded-box { border-radius: 0.75rem; }
+    .border { border: 1px solid rgba(255, 255, 255, 0.2); }
+    .border-t { border-top: 1px solid rgba(255, 255, 255, 0.2); }
+    .border-gray-600 { border-color: #4b5563; }
+    .border-gray-700 { border-color: #374151; }
+    .border-gray-700\/50 { border-color: rgba(55, 65, 81, 0.5); }
+    .border-gray-800 { border-color: #1f2937; }
+    .border-indigo-500\/60 { border-color: rgba(99, 102, 241, 0.6); }
+    .bg-indigo-500 { background-color: #6366f1; }
+    .bg-indigo-500\/50 { background-color: rgba(99, 102, 241, 0.5); }
+    .bg-gray-900\/30 { background-color: rgba(17, 24, 39, 0.3); }
+    .bg-base-100 { background-color: #111827; }
+    .bg-base-100\/80 { background-color: rgba(17, 24, 39, 0.8); }
+    .bg-base-200 { background-color: #1f2937; }
+    .bg-base-200\/50 { background-color: rgba(31, 41, 55, 0.5); }
+    .bg-base-300\/50 { background-color: rgba(17, 24, 39, 0.5); }
+    .bg-gradient-to-br { background-image: linear-gradient(to bottom right, var(--tw-gradient-from), var(--tw-gradient-to)); }
+    .from-indigo-500\/20 { --tw-gradient-from: rgba(99, 102, 241, 0.2); }
+    .from-green-500\/20 { --tw-gradient-from: rgba(34, 197, 94, 0.2); }
+    .from-amber-500\/20 { --tw-gradient-from: rgba(245, 158, 11, 0.2); }
+    .from-gray-900\/60 { --tw-gradient-from: rgba(17, 24, 39, 0.6); }
+    .to-purple-600\/20 { --tw-gradient-to: rgba(147, 51, 234, 0.2); }
+    .to-teal-600\/20 { --tw-gradient-to: rgba(13, 148, 136, 0.2); }
+    .to-orange-600\/20 { --tw-gradient-to: rgba(234, 88, 12, 0.2); }
+    .to-indigo-950\/30 { --tw-gradient-to: rgba(30, 27, 75, 0.3); }
+
+    .font-bold { font-weight: 700; }
+    .font-semibold { font-weight: 600; }
+    .font-medium { font-weight: 500; }
+    .font-light { font-weight: 300; }
+    .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .uppercase { text-transform: uppercase; }
+    .tracking-wide { letter-spacing: 0.025em; }
+    .tracking-wider { letter-spacing: 0.05em; }
+    .leading-relaxed { line-height: 1.625; }
+    .text-xs { font-size: 0.75rem; }
+    .text-sm { font-size: 0.875rem; }
+    .text-base { font-size: 1rem; }
+    .text-lg { font-size: 1.125rem; }
+    .text-xl { font-size: 1.25rem; }
+    .text-2xl { font-size: 1.5rem; }
+    .text-\[0\.65rem\] { font-size: 0.65rem; }
+    .text-\[0\.6rem\] { font-size: 0.6rem; }
+    .text-white { color: #ffffff; }
+    .text-gray-200 { color: #e5e7eb; }
+    .text-gray-300 { color: #d1d5db; }
+    .text-gray-400 { color: #9ca3af; }
+    .text-gray-500 { color: #6b7280; }
+    .text-gray-600 { color: #4b5563; }
+    .text-indigo-400 { color: #818cf8; }
+    .text-indigo-500 { color: #6366f1; }
+    .text-green-400 { color: #4ade80; }
+    .text-amber-400 { color: #fbbf24; }
+    .text-neutral-400 { color: #9ca3af; }
+    .text-neutral-500 { color: #6b7280; }
+
+    .shadow-sm { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); }
+    .shadow { box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25); }
+    .sticky { position: sticky; }
+    .top-0 { top: 0; }
+    .z-50 { z-index: 50; }
+    .backdrop-blur-sm { -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); }
+    .backdrop-blur-md { -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); }
+    .object-contain { object-fit: contain; }
+    .invert { filter: invert(1); }
+    .cursor-default { cursor: default; }
+
+    .transition-colors { transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease; }
+    .transition-all { transition: all 0.3s ease; }
+    .duration-300 { transition-duration: 0.3s; }
+    .hover\:text-indigo-400:hover { color: #818cf8; }
+    .hover\:bg-base-200:hover { background-color: #1f2937; }
+    .hover\:-translate-y-1:hover { transform: translateY(-0.25rem); }
+    .hover\:-translate-y-2:hover { transform: translateY(-0.5rem); }
+    .hover\:border-indigo-500\/50:hover { border-color: rgba(99, 102, 241, 0.5); }
+    .focus\:border-indigo-500:focus { border-color: #6366f1; outline: none; }
+
+    .group:hover .group-hover\:bg-indigo-500\/20 { background-color: rgba(99, 102, 241, 0.2); }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 4rem;
+    }
+    .navbar-start, .navbar-center, .navbar-end {
+      display: flex;
+      align-items: center;
+    }
+    .navbar-start, .navbar-end { flex: 1; }
+    .navbar-center { justify-content: center; }
+    .navbar-end { justify-content: flex-end; }
+
+    .dropdown { position: relative; }
+    .dropdown-content {
+      position: absolute;
+      left: 0;
+      top: 100%;
+      display: none;
+      min-width: 13rem;
+    }
+    .dropdown:focus-within .dropdown-content,
+    .dropdown:hover .dropdown-content {
+      display: block;
+    }
+
+    .menu {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .menu li a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 0.5rem;
+      color: #e5e7eb;
+    }
+    .menu li a:hover { background-color: rgba(99, 102, 241, 0.15); }
+    .menu-horizontal {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .menu-sm li a {
+      font-size: 0.875rem;
+      padding: 0.4rem 0.65rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: 0.65rem;
+      padding: 0.55rem 1rem;
+      font-weight: 600;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      background-color: #374151;
+      color: #f9fafb;
+    }
+    .btn:hover { filter: brightness(1.05); }
+    .btn-sm { padding: 0.4rem 0.75rem; font-size: 0.8rem; }
+    .btn-primary {
+      background-color: #6366f1;
+      border-color: #6366f1;
+      color: #fff;
+    }
+    .btn-ghost {
+      background-color: transparent;
+      border-color: transparent;
+    }
+    .btn-outline {
+      background-color: transparent;
+      border-color: #6b7280;
+      color: #d1d5db;
+    }
+    .btn-dash {
+      background-color: transparent;
+      border: 1px dashed #6366f1;
+    }
+
+    .avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+    .ring-2 { border-width: 2px; }
+    .ring-primary { border-color: #6366f1; }
+    .ring-offset-4 { box-shadow: 0 0 0 4px #111827; }
+    .ring-offset-base-100 { box-shadow: 0 0 0 4px #111827; }
+
+    .card {
+      border-radius: 0.85rem;
+      overflow: hidden;
+      border: 1px solid rgba(55, 65, 81, 0.6);
+      background-color: rgba(31, 41, 55, 0.55);
+    }
+    .card-body { padding: 1.25rem; }
+    .card-title { margin: 0.25rem 0; font-size: 1.1rem; font-weight: 700; }
+    .card-actions { display: flex; align-items: center; flex-wrap: wrap; }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9999px;
+      padding: 0.15rem 0.55rem;
+      font-size: 0.75rem;
+      border: 1px solid transparent;
+      color: #e5e7eb;
+    }
+    .badge-sm { font-size: 0.7rem; padding: 0.1rem 0.45rem; }
+    .badge-primary { background-color: rgba(99, 102, 241, 0.25); border-color: #6366f1; }
+    .badge-success { background-color: rgba(34, 197, 94, 0.2); border-color: #22c55e; }
+    .badge-warning { background-color: rgba(245, 158, 11, 0.2); border-color: #f59e0b; }
+    .badge-ghost { background-color: rgba(255, 255, 255, 0.06); border-color: rgba(255, 255, 255, 0.15); }
+
+    .stats {
+      display: grid;
+      gap: 0.75rem;
+      padding: 0.75rem;
+      border-radius: 0.85rem;
+      border: 1px solid rgba(55, 65, 81, 0.7);
+    }
+    .stats-vertical { grid-template-columns: 1fr; }
+    .stat {
+      background: rgba(31, 41, 55, 0.55);
+      border-radius: 0.7rem;
+      padding: 0.9rem;
+    }
+    .stat-title { color: #9ca3af; font-size: 0.8rem; }
+    .stat-value { color: #ffffff; font-size: 1.5rem; font-weight: 700; line-height: 1.2; }
+    .stat-desc { color: #6b7280; font-size: 0.75rem; }
+
+    .experience-timeline {
+      position: relative;
+      display: grid;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+    .experience-timeline::before {
+      content: "";
+      position: absolute;
+      left: 1rem;
+      top: 0.2rem;
+      bottom: 0.2rem;
+      width: 2px;
+      background: linear-gradient(to bottom, rgba(99, 102, 241, 0.9), rgba(99, 102, 241, 0.2));
+    }
+    .experience-item {
+      position: relative;
+      margin-left: 2.25rem;
+      border: 1px solid rgba(55, 65, 81, 0.65);
+      background: linear-gradient(145deg, rgba(31, 41, 55, 0.65), rgba(17, 24, 39, 0.55));
+      border-radius: 0.85rem;
+      padding: 1rem;
+    }
+    .experience-item::before {
+      content: "";
+      position: absolute;
+      left: -1.55rem;
+      top: 1rem;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-radius: 9999px;
+      background: #6366f1;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.2);
+    }
+    .experience-time {
+      display: inline-block;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      color: #818cf8;
+      font-size: 0.82rem;
+      margin-bottom: 0.3rem;
+    }
+    .experience-role {
+      color: #ffffff;
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin-bottom: 0.25rem;
+    }
+    .experience-company {
+      color: #9ca3af;
+      font-size: 0.85rem;
+      margin-bottom: 0.45rem;
+    }
+    .experience-desc {
+      color: #9ca3af;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    @media (min-width: 768px) {
+      .experience-item { padding: 1.15rem 1.2rem; }
+      .experience-role { font-size: 1.12rem; }
+      .experience-desc { font-size: 0.92rem; }
+    }
+
+    .form-control { width: 100%; }
+    .label { display: block; margin-bottom: 0.35rem; }
+    .label-text { color: #d1d5db; font-size: 0.85rem; }
+    .input,
+    .textarea {
+      width: 100%;
+      border-radius: 0.6rem;
+      border: 1px solid #4b5563;
+      background: rgba(17, 24, 39, 0.6);
+      color: #f3f4f6;
+      padding: 0.65rem 0.75rem;
+      font: inherit;
+    }
+    .textarea { resize: vertical; min-height: 7rem; }
+    .input::placeholder,
+    .textarea::placeholder { color: #9ca3af; }
+
+    .animate-pulse { animation: pulse 1.5s ease-in-out infinite; }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.45; }
+    }
+
+    @media (min-width: 640px) {
+      .sm\:text-sm { font-size: 0.875rem; }
+      .sm\:text-xs { font-size: 0.75rem; }
+      .sm\:text-base { font-size: 1rem; }
+      .sm\:text-2xl { font-size: 1.5rem; }
+      .sm\:text-3xl { font-size: 1.875rem; }
+      .sm\:w-32 { width: 8rem; }
+      .sm\:w-8 { width: 2rem; }
+      .sm\:h-8 { height: 2rem; }
+      .sm\:h-32 { height: 8rem; }
+      .sm\:h-48 { height: 12rem; }
+      .sm\:ml-6 { margin-left: 1.5rem; }
+      .sm\:mt-4 { margin-top: 1rem; }
+      .sm\:mt-10 { margin-top: 2.5rem; }
+      .sm\:mb-6 { margin-bottom: 1.5rem; }
+      .sm\:mb-8 { margin-bottom: 2rem; }
+      .sm\:pt-4 { padding-top: 1rem; }
+      .sm\:pt-12 { padding-top: 3rem; }
+      .sm\:p-4 { padding: 1rem; }
+      .sm\:p-5 { padding: 1.25rem; }
+      .sm\:p-6 { padding: 1.5rem; }
+      .sm\:py-8 { padding-top: 2rem; padding-bottom: 2rem; }
+      .sm\:px-4 { padding-left: 1rem; padding-right: 1rem; }
+      .sm\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .sm\:flex-row { flex-direction: row; }
+      .sm\:grid-cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .sm\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .sm\:gap-0 { gap: 0; }
+      .sm\:gap-3 { gap: 0.75rem; }
+      .sm\:gap-4 { gap: 1rem; }
+      .sm\:gap-6 { gap: 1.5rem; }
+      .sm\:stats-horizontal { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    @media (min-width: 768px) {
+      .md\:flex-row { flex-direction: row; }
+      .md\:items-start { align-items: flex-start; }
+      .md\:justify-start { justify-content: flex-start; }
+      .md\:text-left { text-align: left; }
+      .md\:text-end { text-align: right; }
+      .md\:pt-16 { padding-top: 4rem; }
+      .md\:py-16 { padding-top: 4rem; padding-bottom: 4rem; }
+      .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+      .md\:gap-10 { gap: 2.5rem; }
+      .md\:stats-vertical { grid-template-columns: 1fr; }
+    }
+
+    @media (min-width: 1024px) {
+      .lg\:hidden { display: none; }
+      .lg\:flex { display: flex; }
+      .lg\:flex-row { flex-direction: row; }
+      .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .lg\:grid-cols-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+      .lg\:p-8 { padding: 2rem; }
+      .lg\:px-6 { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .lg\:px-12 { padding-left: 3rem; padding-right: 3rem; }
+      .lg\:py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+      .lg\:gap-10 { gap: 2.5rem; }
+      .lg\:gap-14 { gap: 3.5rem; }
+    }
+
+    @media (max-width: 1023px) {
+      .max-md\:timeline-compact .timeline li { padding-left: 2rem; }
+      .navbar-center { display: none; }
     }
   </style>
 
@@ -483,8 +941,8 @@
           <h3 class="card-title text-white">E-Commerce Platform</h3>
           <p class="text-gray-400 text-sm">A full-featured online store with user authentication, real-time inventory management, and Stripe payment integration.</p>
           <div class="card-actions justify-start mt-4 gap-2">
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">GitHub</a>
+            <a href="projects/ecommerce-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
+            <a href="projects/ecommerce-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Project</a>
           </div>
         </div>
       </div>
@@ -506,8 +964,8 @@
           <h3 class="card-title text-white">Real-Time Chat App</h3>
           <p class="text-gray-400 text-sm">A messaging application with WebSocket support, typing indicators, read receipts, and media sharing capabilities.</p>
           <div class="card-actions justify-start mt-4 gap-2">
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">GitHub</a>
+            <a href="projects/chat-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
+            <a href="projects/chat-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Project</a>
           </div>
         </div>
       </div>
@@ -529,8 +987,8 @@
           <h3 class="card-title text-white">Task Management Dashboard</h3>
           <p class="text-gray-400 text-sm">A Kanban-style project management tool with drag-and-drop, team collaboration, and analytics dashboards.</p>
           <div class="card-actions justify-start mt-4 gap-2">
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-            <a href="#" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">GitHub</a>
+            <a href="projects/task-dashboard-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
+            <a href="projects/task-dashboard-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Project</a>
           </div>
         </div>
       </div>
@@ -543,64 +1001,36 @@
   <section id="experience" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 md:py-16 lg:py-20">
     <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Experience</h2>
     <div class="w-16 h-1 bg-indigo-500 rounded mb-6 sm:mb-8"></div>
-    <ul class="timeline timeline-snap-icon max-md:timeline-compact timeline-vertical">
+    <div class="experience-timeline">
 
-      <!-- Experience 1 -->
-      <li>
-        <div class="timeline-middle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-indigo-400">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
-          </svg>
-        </div>
-        <div class="timeline-start mb-10 md:text-end">
-          <time class="font-mono text-indigo-400 text-sm">2024 – Present</time>
-          <div class="text-lg font-bold text-white">Full Stack Developer</div>
-          <div class="text-sm text-gray-400 mb-2">Freelance / Self-Employed</div>
-          <p class="text-gray-400 text-sm">
-            Building end-to-end web applications for clients using React, Next.js, and Firebase. Responsible for UI/UX design, API development, and deployment.
-          </p>
-        </div>
-        <hr class="bg-indigo-500" />
-      </li>
+      <article class="experience-item">
+        <time class="experience-time">2024 - Present</time>
+        <h3 class="experience-role">Full Stack Developer</h3>
+        <p class="experience-company">Freelance / Self-Employed</p>
+        <p class="experience-desc">
+          Building end-to-end web applications for clients using React, Next.js, and Firebase. Responsible for UI/UX design, API development, and deployment.
+        </p>
+      </article>
 
-      <!-- Experience 2 -->
-      <li>
-        <hr class="bg-indigo-500" />
-        <div class="timeline-middle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-indigo-400">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
-          </svg>
-        </div>
-        <div class="timeline-end mb-10">
-          <time class="font-mono text-indigo-400 text-sm">2023 – 2024</time>
-          <div class="text-lg font-bold text-white">Frontend Developer</div>
-          <div class="text-sm text-gray-400 mb-2">Tech Startup</div>
-          <p class="text-gray-400 text-sm">
-            Developed responsive web interfaces with React and TailwindCSS. Collaborated with designers to implement pixel-perfect UIs and improved page load times by 40%.
-          </p>
-        </div>
-        <hr class="bg-indigo-500/50" />
-      </li>
+      <article class="experience-item">
+        <time class="experience-time">2023 - 2024</time>
+        <h3 class="experience-role">Frontend Developer</h3>
+        <p class="experience-company">Tech Startup</p>
+        <p class="experience-desc">
+          Developed responsive web interfaces with React and TailwindCSS. Collaborated with designers to implement pixel-perfect UIs and improved page load times by 40%.
+        </p>
+      </article>
 
-      <!-- Experience 3 -->
-      <li>
-        <hr class="bg-indigo-500/50" />
-        <div class="timeline-middle">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="h-5 w-5 text-indigo-400">
-            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.857-9.809a.75.75 0 00-1.214-.882l-3.483 4.79-1.88-1.88a.75.75 0 10-1.06 1.061l2.5 2.5a.75.75 0 001.137-.089l4-5.5z" clip-rule="evenodd" />
-          </svg>
-        </div>
-        <div class="timeline-start mb-10 md:text-end">
-          <time class="font-mono text-indigo-400 text-sm">2022 – 2023</time>
-          <div class="text-lg font-bold text-white">Junior Developer</div>
-          <div class="text-sm text-gray-400 mb-2">University Projects & Internship</div>
-          <p class="text-gray-400 text-sm">
-            Built Java-based backend services and learned full stack fundamentals. Contributed to team projects using Git workflows and agile methodologies.
-          </p>
-        </div>
-      </li>
+      <article class="experience-item">
+        <time class="experience-time">2022 - 2023</time>
+        <h3 class="experience-role">Junior Developer</h3>
+        <p class="experience-company">University Projects and Internship</p>
+        <p class="experience-desc">
+          Built Java-based backend services and learned full stack fundamentals. Contributed to team projects using Git workflows and agile methodologies.
+        </p>
+      </article>
 
-    </ul>
+    </div>
   </section>
 
 
