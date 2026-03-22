@@ -95,6 +95,107 @@
       gap: 0.75rem;
     }
 
+    .thumb {
+      height: 130px;
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      position: relative;
+      overflow: hidden;
+      background: #0f172a;
+    }
+
+    .thumb::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      opacity: 0.7;
+      background-size: 22px 22px;
+      background-image:
+        linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    }
+
+    .thumb-inner {
+      position: absolute;
+      inset: 12px;
+      border-radius: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(15, 23, 42, 0.55);
+      display: grid;
+      grid-template-columns: 1fr 0.65fr;
+      gap: 0.45rem;
+      padding: 0.5rem;
+    }
+
+    .thumb-bars {
+      display: grid;
+      gap: 0.35rem;
+      align-content: start;
+    }
+
+    .thumb-bar {
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.4);
+    }
+
+    .thumb-bar.wide { width: 90%; }
+    .thumb-bar.mid { width: 65%; }
+    .thumb-bar.short { width: 45%; }
+
+    .thumb-side {
+      border-radius: 8px;
+      background: rgba(2, 6, 23, 0.65);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .thumb-commerce {
+      background: linear-gradient(130deg, #1e3a8a, #0f172a 50%, #0b1220);
+    }
+
+    .thumb-chat {
+      background: linear-gradient(130deg, #0f766e, #082f49 45%, #111827);
+    }
+
+    .thumb-kanban {
+      background: linear-gradient(130deg, #6d28d9, #1e1b4b 45%, #111827);
+    }
+
+    .thumb-chat .thumb-inner {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(3, 1fr);
+    }
+
+    .thumb-chat .thumb-side {
+      border-radius: 8px;
+      background: rgba(2, 6, 23, 0.45);
+    }
+
+    .thumb-chat .thumb-side:nth-child(1) { width: 70%; }
+    .thumb-chat .thumb-side:nth-child(2) { width: 85%; justify-self: end; }
+    .thumb-chat .thumb-side:nth-child(3) { width: 62%; }
+
+    .thumb-kanban .thumb-inner {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.4rem;
+    }
+
+    .thumb-kanban .thumb-side {
+      padding: 0.35rem;
+      display: grid;
+      align-content: start;
+      gap: 0.25rem;
+    }
+
+    .thumb-kanban .thumb-side::before,
+    .thumb-kanban .thumb-side::after {
+      content: "";
+      height: 7px;
+      border-radius: 999px;
+      background: rgba(148, 163, 184, 0.45);
+      display: block;
+    }
+
     .pill {
       width: fit-content;
       padding: 0.2rem 0.55rem;
@@ -176,6 +277,17 @@
 
     <section class="grid">
       <article class="card">
+        <div class="thumb thumb-commerce" aria-hidden="true">
+          <div class="thumb-inner">
+            <div class="thumb-bars">
+              <span class="thumb-bar wide"></span>
+              <span class="thumb-bar mid"></span>
+              <span class="thumb-bar short"></span>
+              <span class="thumb-bar wide"></span>
+            </div>
+            <div class="thumb-side"></div>
+          </div>
+        </div>
         <span class="pill">React + Firebase</span>
         <h2>E-Commerce Platform</h2>
         <p>Product listing, add-to-cart flow, running total, and checkout simulation.</p>
@@ -186,6 +298,13 @@
       </article>
 
       <article class="card">
+        <div class="thumb thumb-chat" aria-hidden="true">
+          <div class="thumb-inner">
+            <div class="thumb-side"></div>
+            <div class="thumb-side"></div>
+            <div class="thumb-side"></div>
+          </div>
+        </div>
         <span class="pill">Next.js + Node</span>
         <h2>Real-Time Chat App</h2>
         <p>Message sending flow with simulated bot replies to represent real-time conversations.</p>
@@ -196,6 +315,13 @@
       </article>
 
       <article class="card">
+        <div class="thumb thumb-kanban" aria-hidden="true">
+          <div class="thumb-inner">
+            <div class="thumb-side"></div>
+            <div class="thumb-side"></div>
+            <div class="thumb-side"></div>
+          </div>
+        </div>
         <span class="pill">Java + Firebase</span>
         <h2>Task Management Dashboard</h2>
         <p>Kanban board with drag-and-drop task movement across workflow columns.</p>

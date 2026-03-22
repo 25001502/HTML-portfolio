@@ -8,10 +8,13 @@
     :root {
       --bg: #0d1117;
       --panel: #161b22;
+      --panel-2: #0f172a;
       --line: #30363d;
       --text: #e6edf3;
       --muted: #8b949e;
       --accent: #3b82f6;
+      --ok: #10b981;
+      --warn: #f59e0b;
       --other: #1f2937;
     }
     * { box-sizing: border-box; }
@@ -30,7 +33,8 @@
       border: 1px solid var(--line);
       border-radius: 14px;
       overflow: hidden;
-      background: var(--panel);
+      background: linear-gradient(135deg, var(--panel), #111827);
+      box-shadow: 0 16px 32px rgba(0, 0, 0, 0.35);
     }
     .head {
       padding: 0.9rem 1rem;
@@ -38,10 +42,84 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .head-left {
+      display: grid;
+      gap: 0.2rem;
+    }
+    .head-title {
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--ok);
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.18);
+    }
+    .head-right {
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      flex-wrap: wrap;
     }
     .head a { color: #93c5fd; text-decoration: none; }
+    .link-btn {
+      border: 1px solid #3b4252;
+      color: #c7d2fe;
+      border-radius: 8px;
+      padding: 0.38rem 0.58rem;
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      background: rgba(15, 23, 42, 0.55);
+    }
+    .toolbar {
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.55rem;
+      padding: 0.6rem 0.75rem;
+      background: rgba(2, 6, 23, 0.45);
+    }
+    .search {
+      width: 100%;
+      border: 1px solid #374151;
+      border-radius: 8px;
+      padding: 0.5rem 0.6rem;
+      background: #0f172a;
+      color: var(--text);
+      font: inherit;
+      font-size: 0.85rem;
+    }
+    .tools {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
+    .mini-btn {
+      border: 1px solid #374151;
+      border-radius: 8px;
+      padding: 0.45rem 0.58rem;
+      font-size: 0.76rem;
+      font-weight: 700;
+      background: #111827;
+      color: var(--text);
+      cursor: pointer;
+    }
+    .mini-btn:hover { filter: brightness(1.08); }
     .messages {
-      height: 420px;
+      height: 390px;
       overflow-y: auto;
       padding: 1rem;
       display: flex;
@@ -60,6 +138,8 @@
       padding: 0.6rem 0.75rem;
       border-radius: 12px;
       line-height: 1.45;
+      white-space: pre-wrap;
+      word-break: break-word;
     }
     .me {
       align-self: flex-end;
@@ -79,12 +159,63 @@
       color: var(--muted);
       margin-top: 0.25rem;
     }
+    .typing {
+      align-self: flex-start;
+      color: var(--muted);
+      font-size: 0.8rem;
+      background: rgba(2, 6, 23, 0.5);
+      border: 1px solid #374151;
+      border-radius: 999px;
+      padding: 0.3rem 0.6rem;
+      display: none;
+    }
+    .typing.show { display: inline-flex; }
+    .typing-dots {
+      display: inline-flex;
+      gap: 0.15rem;
+      margin-left: 0.2rem;
+    }
+    .typing-dots span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #94a3b8;
+      animation: blink 1s infinite;
+    }
+    .typing-dots span:nth-child(2) { animation-delay: 0.15s; }
+    .typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0.3; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(-1px); }
+    }
+
     .input {
       border-top: 1px solid var(--line);
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      padding: 0.75rem;
+      background: rgba(2, 6, 23, 0.35);
+    }
+    .quick {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+    .chip {
+      border: 1px solid #374151;
+      border-radius: 999px;
+      padding: 0.25rem 0.55rem;
+      font-size: 0.72rem;
+      color: #cbd5e1;
+      background: rgba(15, 23, 42, 0.7);
+      cursor: pointer;
+    }
+    .form-row {
       display: grid;
       grid-template-columns: 1fr auto;
       gap: 0.6rem;
-      padding: 0.75rem;
     }
     input {
       width: 100%;
@@ -95,6 +226,11 @@
       color: var(--text);
       font: inherit;
     }
+    input:focus, .search:focus {
+      outline: none;
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    }
     button {
       border: 0;
       border-radius: 10px;
@@ -104,20 +240,65 @@
       font-weight: 700;
       cursor: pointer;
     }
+    .help {
+      color: var(--muted);
+      font-size: 0.74rem;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    @media (max-width: 620px) {
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+      button {
+        width: 100%;
+      }
+    }
   </style>
 </head>
 <body>
   <section class="chat">
     <header class="head">
-      <strong>Real-Time Chat Demo</strong>
-      <a href="../Profile.html">Back to Portfolio</a>
+      <div class="head-left">
+        <strong class="head-title">Real-Time Chat Demo Pro</strong>
+        <span class="status"><span class="dot"></span> Bot online and ready</span>
+      </div>
+      <div class="head-right">
+        <a class="link-btn" href="../Profile.html">Back to Portfolio</a>
+      </div>
     </header>
+
+    <div class="toolbar">
+      <input id="searchInput" class="search" placeholder="Search messages..." autocomplete="off" />
+      <div class="tools">
+        <button type="button" class="mini-btn" id="exportBtn">Export</button>
+        <button type="button" class="mini-btn" id="clearBtn">Clear</button>
+        <button type="button" class="mini-btn" id="seedBtn">Seed</button>
+      </div>
+    </div>
 
     <main class="messages" id="messages"></main>
 
+    <div class="typing" id="typing">
+      Bot is typing
+      <span class="typing-dots"><span></span><span></span><span></span></span>
+    </div>
+
     <form class="input" id="chatForm">
-      <input id="chatInput" placeholder="Type a message..." autocomplete="off" />
-      <button type="submit">Send</button>
+      <div class="quick" id="quickReplies">
+        <button type="button" class="chip">Show roadmap</button>
+        <button type="button" class="chip">Tech stack advice</button>
+        <button type="button" class="chip">How to deploy</button>
+      </div>
+      <div class="form-row">
+        <input id="chatInput" placeholder="Type a message... (try /help)" autocomplete="off" />
+        <button type="submit">Send</button>
+      </div>
+      <p class="help">Commands: /help, /time, /clear, /seed, /export</p>
     </form>
   </section>
 
@@ -125,33 +306,181 @@
     const messages = document.getElementById("messages");
     const form = document.getElementById("chatForm");
     const input = document.getElementById("chatInput");
+    const typing = document.getElementById("typing");
+    const searchInput = document.getElementById("searchInput");
+    const exportBtn = document.getElementById("exportBtn");
+    const clearBtn = document.getElementById("clearBtn");
+    const seedBtn = document.getElementById("seedBtn");
+    const quickReplies = document.getElementById("quickReplies");
+
+    const STORAGE_KEY = "chatDemoProMessages";
+    const MAX_MESSAGES = 120;
+
+    const state = {
+      messages: []
+    };
 
     function now() {
       return new Date().toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
     }
 
-    function addMessage(text, who) {
-      const wrap = document.createElement("article");
-      const bubble = document.createElement("div");
-      const meta = document.createElement("div");
-      bubble.className = `bubble ${who}`;
-      bubble.textContent = text;
-      meta.className = "meta";
-      meta.textContent = `${who === "me" ? "You" : "Bot"} • ${now()}`;
-      wrap.appendChild(bubble);
-      wrap.appendChild(meta);
-      messages.appendChild(wrap);
+    function nowDateTime() {
+      return new Date().toLocaleString();
+    }
+
+    function createMessage(text, who) {
+      return {
+        id: `${Date.now()}-${Math.floor(Math.random() * 100000)}`,
+        text,
+        who,
+        at: nowDateTime()
+      };
+    }
+
+    function save() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state.messages));
+    }
+
+    function load() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (!raw) return;
+      try {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          state.messages = parsed.slice(-MAX_MESSAGES);
+        }
+      } catch (error) {
+        state.messages = [];
+      }
+    }
+
+    function scrollToBottom() {
       messages.scrollTop = messages.scrollHeight;
     }
 
+    function renderMessages(filterText = "") {
+      const query = filterText.trim().toLowerCase();
+      messages.innerHTML = "";
+
+      const list = query
+        ? state.messages.filter((msg) => msg.text.toLowerCase().includes(query))
+        : state.messages;
+
+      for (const msg of list) {
+        const wrap = document.createElement("article");
+        const bubble = document.createElement("div");
+        const meta = document.createElement("div");
+        bubble.className = `bubble ${msg.who}`;
+        bubble.textContent = msg.text;
+        meta.className = "meta";
+        meta.textContent = `${msg.who === "me" ? "You" : "Bot"} • ${msg.at}`;
+        wrap.appendChild(bubble);
+        wrap.appendChild(meta);
+        messages.appendChild(wrap);
+      }
+
+      if (!list.length) {
+        const empty = document.createElement("div");
+        empty.className = "meta";
+        empty.textContent = query ? "No messages match your search." : "No messages yet.";
+        messages.appendChild(empty);
+      }
+
+      scrollToBottom();
+    }
+
+    function addMessage(text, who, render = true) {
+      state.messages.push(createMessage(text, who));
+      state.messages = state.messages.slice(-MAX_MESSAGES);
+      save();
+      if (render) {
+        renderMessages(searchInput.value);
+      }
+    }
+
     const botReplies = [
-      "Nice message. In the real app this would be pushed over WebSockets.",
-      "Typing indicators and read receipts can be layered on top of this flow.",
-      "This demo stores no history, but your production version can persist chats.",
-      "You can connect this to Firebase, Socket.IO, or Supabase Realtime quickly."
+      "Nice message. This pro demo supports search, export, and persisted history.",
+      "You can hook this UI to Socket.IO, Firebase, Supabase Realtime, or WebRTC data channels.",
+      "For production, add auth, moderation filters, and end-to-end encryption where needed.",
+      "Try slash commands like /help or /seed to test extra actions instantly."
     ];
 
-    addMessage("Welcome to the chat demo. Send a message to test it.", "bot");
+    function simulateBotReply(text) {
+      typing.classList.add("show");
+      const delay = 550 + Math.floor(Math.random() * 650);
+      setTimeout(() => {
+        typing.classList.remove("show");
+        addMessage(text, "bot");
+      }, delay);
+    }
+
+    function seedConversation() {
+      const sample = [
+        ["bot", "Welcome to the upgraded chat demo."],
+        ["me", "Show me useful features."],
+        ["bot", "You can search, export, clear, and run slash commands."]
+      ];
+
+      for (const [who, text] of sample) {
+        addMessage(text, who, false);
+      }
+      save();
+      renderMessages(searchInput.value);
+    }
+
+    function exportConversation() {
+      const content = state.messages
+        .map((msg) => `[${msg.at}] ${msg.who === "me" ? "You" : "Bot"}: ${msg.text}`)
+        .join("\n");
+
+      const blob = new Blob([content || "No messages to export."], { type: "text/plain" });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "chat-demo-export.txt";
+      link.click();
+      URL.revokeObjectURL(url);
+    }
+
+    function clearConversation() {
+      state.messages = [];
+      save();
+      renderMessages(searchInput.value);
+      addMessage("Conversation cleared. Start again.", "bot");
+    }
+
+    function handleCommand(text) {
+      const cmd = text.toLowerCase();
+      if (cmd === "/help") {
+        addMessage("Commands: /help, /time, /clear, /seed, /export", "bot");
+        return true;
+      }
+      if (cmd === "/time") {
+        addMessage(`Current local time: ${nowDateTime()}`, "bot");
+        return true;
+      }
+      if (cmd === "/clear") {
+        clearConversation();
+        return true;
+      }
+      if (cmd === "/seed") {
+        seedConversation();
+        return true;
+      }
+      if (cmd === "/export") {
+        exportConversation();
+        addMessage("Export completed.", "bot");
+        return true;
+      }
+      return false;
+    }
+
+    load();
+    if (!state.messages.length) {
+      addMessage("Welcome to the upgraded chat demo. Send a message or type /help.", "bot", false);
+      save();
+    }
+    renderMessages();
 
     form.addEventListener("submit", (event) => {
       event.preventDefault();
@@ -161,8 +490,38 @@
       addMessage(text, "me");
       input.value = "";
 
+      if (text.startsWith("/") && handleCommand(text)) {
+        return;
+      }
+
       const reply = botReplies[Math.floor(Math.random() * botReplies.length)];
-      setTimeout(() => addMessage(reply, "bot"), 500);
+      simulateBotReply(reply);
+    });
+
+    searchInput.addEventListener("input", () => {
+      renderMessages(searchInput.value);
+    });
+
+    exportBtn.addEventListener("click", () => {
+      exportConversation();
+      addMessage("Conversation exported to text file.", "bot");
+    });
+
+    clearBtn.addEventListener("click", clearConversation);
+    seedBtn.addEventListener("click", seedConversation);
+
+    quickReplies.addEventListener("click", (event) => {
+      const button = event.target.closest(".chip");
+      if (!button) return;
+      input.value = button.textContent;
+      input.focus();
+    });
+
+    input.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" && event.shiftKey) {
+        event.preventDefault();
+        input.value += "\n";
+      }
     });
   </script>
 </body>
