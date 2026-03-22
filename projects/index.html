@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Demos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b1220;
+      --bg-2: #111a2f;
+      --panel: rgba(17, 26, 47, 0.88);
+      --line: #2b3b63;
+      --text: #e5e7eb;
+      --muted: #94a3b8;
+      --accent: #818cf8;
+      --accent-2: #38bdf8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 10%, rgba(56, 189, 248, 0.12), transparent 35%),
+        radial-gradient(circle at 90% 0%, rgba(129, 140, 248, 0.18), transparent 38%),
+        linear-gradient(145deg, var(--bg), var(--bg-2));
+    }
+
+    .wrap {
+      width: min(1100px, 92vw);
+      margin: 2rem auto;
+    }
+
+    .top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .title {
+      margin: 0;
+      font-size: clamp(1.5rem, 3vw, 2.25rem);
+      letter-spacing: 0.02em;
+    }
+
+    .subtitle {
+      margin: 0.35rem 0 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      color: #c7d2fe;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid #374151;
+      border-radius: 999px;
+      padding: 0.5rem 0.8rem;
+      background: rgba(15, 23, 42, 0.6);
+      transition: all 0.2s ease;
+    }
+
+    .back-link:hover {
+      border-color: #818cf8;
+      color: #e0e7ff;
+      transform: translateY(-1px);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 1rem;
+      background: var(--panel);
+      -webkit-backdrop-filter: blur(6px);
+      backdrop-filter: blur(6px);
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .pill {
+      width: fit-content;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      border: 1px solid rgba(129, 140, 248, 0.6);
+      color: #c7d2fe;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      font-weight: 700;
+    }
+
+    .card h2 {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.9rem;
+    }
+
+    .actions {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      margin-top: 0.2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.52rem 0.9rem;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, var(--accent), var(--accent-2));
+      color: white;
+    }
+
+    .btn-secondary {
+      background: rgba(17, 24, 39, 0.35);
+      border-color: #374151;
+      color: #d1d5db;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    @media (max-width: 960px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 680px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div>
+        <h1 class="title">Project Demos</h1>
+        <p class="subtitle">Interactive portfolio demos you can open and test directly.</p>
+      </div>
+      <a class="back-link" href="../Profile.html">Back to Portfolio</a>
+    </header>
+
+    <section class="grid">
+      <article class="card">
+        <span class="pill">React + Firebase</span>
+        <h2>E-Commerce Platform</h2>
+        <p>Product listing, add-to-cart flow, running total, and checkout simulation.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="ecommerce-demo.html" target="_blank" rel="noopener noreferrer">Open Demo</a>
+          <a class="btn btn-secondary" href="ecommerce-demo.html">Open Here</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="pill">Next.js + Node</span>
+        <h2>Real-Time Chat App</h2>
+        <p>Message sending flow with simulated bot replies to represent real-time conversations.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="chat-demo.html" target="_blank" rel="noopener noreferrer">Open Demo</a>
+          <a class="btn btn-secondary" href="chat-demo.html">Open Here</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <span class="pill">Java + Firebase</span>
+        <h2>Task Management Dashboard</h2>
+        <p>Kanban board with drag-and-drop task movement across workflow columns.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="task-dashboard-demo.html" target="_blank" rel="noopener noreferrer">Open Demo</a>
+          <a class="btn btn-secondary" href="task-dashboard-demo.html">Open Here</a>
+        </div>
+      </article>
+    </section>
+  </main>
+</body>
+</html>
