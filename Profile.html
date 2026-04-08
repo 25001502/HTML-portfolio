@@ -29,6 +29,10 @@
       scroll-behavior: smooth;
     }
 
+    section[id] {
+      scroll-margin-top: 5.5rem;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -103,14 +107,14 @@
     /* Responsive grid: 3 cols on mobile → 5 on sm+ */
     .skills-list {
       display: grid;
-      grid-template-columns: repeat(3, auto);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       list-style: none;
       padding: 0;
       margin: 0;
       gap: 0.5rem;
     }
     @media (min-width: 640px) {
-      .skills-list { grid-template-columns: repeat(5, auto); }
+      .skills-list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
     }
 
     .skill-btn {
@@ -319,6 +323,16 @@
     .focus\:border-indigo-500:focus { border-color: #6366f1; outline: none; }
 
     .group:hover .group-hover\:bg-indigo-500\/20 { background-color: rgba(99, 102, 241, 0.2); }
+
+
+    a:focus-visible,
+    button:focus-visible,
+    .btn:focus-visible,
+    .menu li a:focus-visible {
+      outline: 2px solid #818cf8;
+      outline-offset: 2px;
+      border-radius: 0.5rem;
+    }
 
     .navbar {
       display: flex;
@@ -622,11 +636,11 @@
     <div class="navbar-start">
       <div class="dropdown">
         <!-- Hamburger button: visible on mobile/tablet, hidden on lg+ -->
-        <div tabindex="0" role="button" aria-label="Open menu" class="btn btn-ghost lg:hidden">
+        <button type="button" aria-label="Open menu" class="btn btn-ghost lg:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
           </svg>
-        </div>
+        </button>
         <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
           <li><a href="#profile">Home</a></li>
           <li><a href="#about">About</a></li>

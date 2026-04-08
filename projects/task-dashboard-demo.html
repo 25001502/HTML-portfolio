@@ -12,6 +12,9 @@
       --text: #e5e7eb;
       --muted: #94a3b8;
       --accent: #818cf8;
+      --ok: #22c55e;
+      --warn: #f59e0b;
+      --danger: #ef4444;
     }
     * { box-sizing: border-box; }
     body {
@@ -22,7 +25,7 @@
       min-height: 100vh;
       padding: 1rem;
     }
-    .wrap { width: min(1100px, 100%); margin: 0 auto; }
+    .wrap { width: min(1200px, 100%); margin: 0 auto; }
     .top {
       display: flex;
       justify-content: space-between;
@@ -32,6 +35,39 @@
       flex-wrap: wrap;
     }
     .top a { color: #bfdbfe; text-decoration: none; }
+    .muted { color: var(--muted); font-size: 0.9rem; margin-top: 0.2rem; }
+    .toolbar {
+      display: grid;
+      grid-template-columns: 1.2fr 0.7fr 0.7fr auto;
+      gap: 0.6rem;
+      margin-bottom: 1rem;
+    }
+    input, select {
+      width: 100%;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 0.55rem 0.6rem;
+      background: #0f172a;
+      color: var(--text);
+      font: inherit;
+    }
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 0.55rem 0.8rem;
+      font-weight: 700;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+    }
+    .filters {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .filters input { max-width: 280px; }
+
     .board {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -42,28 +78,74 @@
       border: 1px solid var(--line);
       border-radius: 12px;
       padding: 0.75rem;
-      min-height: 450px;
+      min-height: 420px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
     }
-    .col h2 {
-      margin: 0 0 0.75rem;
-      font-size: 1rem;
+    .col-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       color: #c7d2fe;
+      border-bottom: 1px dashed #334155;
+      padding-bottom: 0.4rem;
+    }
+    .count {
+      border-radius: 999px;
+      font-size: 0.75rem;
+      border: 1px solid #43547a;
+      padding: 0.12rem 0.5rem;
+      color: #bfdbfe;
     }
     .task {
       background: #1b2643;
       border: 1px solid #334155;
       border-radius: 10px;
       padding: 0.65rem;
-      margin-bottom: 0.55rem;
       cursor: grab;
+      display: grid;
+      gap: 0.4rem;
     }
-    .task strong { display: block; margin-bottom: 0.25rem; }
+    .task-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      align-items: start;
+    }
     .task small { color: var(--muted); }
+    .pill {
+      border-radius: 999px;
+      font-size: 0.68rem;
+      padding: 0.12rem 0.42rem;
+      border: 1px solid;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .p-high { color: #fecaca; border-color: #7f1d1d; background: rgba(127, 29, 29, 0.18); }
+    .p-medium { color: #fde68a; border-color: #713f12; background: rgba(113, 63, 18, 0.2); }
+    .p-low { color: #bbf7d0; border-color: #14532d; background: rgba(20, 83, 45, 0.2); }
+    .task-actions {
+      display: flex;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }
+    .task-actions button {
+      padding: 0.26rem 0.45rem;
+      font-size: 0.74rem;
+      border-radius: 8px;
+      background: #334155;
+    }
+    .task-actions button.done { background: var(--ok); }
+    .task-actions button.delete { background: var(--danger); }
     .col.drag-over {
       outline: 2px dashed var(--accent);
       outline-offset: 2px;
     }
-    @media (max-width: 900px) {
+
+    @media (max-width: 960px) {
+      .toolbar { grid-template-columns: 1fr; }
       .board { grid-template-columns: 1fr; }
       .col { min-height: 220px; }
     }
@@ -72,73 +154,188 @@
 <body>
   <div class="wrap">
     <div class="top">
-      <h1>Task Management Dashboard Demo</h1>
+      <div>
+        <h1>Task Management Dashboard Demo</h1>
+        <p class="muted">Create tasks, assign priority/owner, drag across stages, and persist board state.</p>
+      </div>
       <a href="../Profile.html">Back to Portfolio</a>
     </div>
 
-    <div class="board">
-      <section class="col" data-column="todo">
-        <h2>To Do</h2>
-        <article class="task" draggable="true">
-          <strong>Design login page</strong>
-          <small>Priority: High</small>
-        </article>
-        <article class="task" draggable="true">
-          <strong>Set up Firebase auth</strong>
-          <small>Priority: Medium</small>
-        </article>
-      </section>
+    <form id="taskForm" class="toolbar">
+      <input id="title" placeholder="Task title (e.g. Build billing page)" required />
+      <input id="owner" placeholder="Assignee" required />
+      <select id="priority">
+        <option value="high">High Priority</option>
+        <option value="medium" selected>Medium Priority</option>
+        <option value="low">Low Priority</option>
+      </select>
+      <button type="submit">Add Task</button>
+    </form>
 
-      <section class="col" data-column="doing">
-        <h2>In Progress</h2>
-        <article class="task" draggable="true">
-          <strong>Build user dashboard</strong>
-          <small>Priority: High</small>
-        </article>
-      </section>
-
-      <section class="col" data-column="done">
-        <h2>Done</h2>
-        <article class="task" draggable="true">
-          <strong>Create project repository</strong>
-          <small>Completed today</small>
-        </article>
-      </section>
+    <div class="filters">
+      <input id="search" placeholder="Filter tasks by title or owner" />
+      <select id="priorityFilter">
+        <option value="all">All priorities</option>
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+      </select>
     </div>
+
+    <div class="board" id="board"></div>
   </div>
 
   <script>
-    let dragged = null;
+    const STORAGE_KEY = "taskBoardV2";
+    const columns = [
+      { id: "todo", label: "To Do" },
+      { id: "doing", label: "In Progress" },
+      { id: "done", label: "Done" }
+    ];
 
-    document.addEventListener("dragstart", (event) => {
+    let state = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null") || [
+      { id: crypto.randomUUID(), title: "Design login page", owner: "Thando", priority: "high", column: "todo" },
+      { id: crypto.randomUUID(), title: "Set up Firebase auth", owner: "Lerato", priority: "medium", column: "todo" },
+      { id: crypto.randomUUID(), title: "Build user dashboard", owner: "Mpho", priority: "high", column: "doing" },
+      { id: crypto.randomUUID(), title: "Create project repository", owner: "Team", priority: "low", column: "done" }
+    ];
+
+    const boardEl = document.getElementById("board");
+    const searchEl = document.getElementById("search");
+    const priorityFilterEl = document.getElementById("priorityFilter");
+    let draggedId = null;
+
+    function save() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function taskMatches(task) {
+      const q = searchEl.value.trim().toLowerCase();
+      const pf = priorityFilterEl.value;
+      const matchesText = !q || `${task.title} ${task.owner}`.toLowerCase().includes(q);
+      const matchesPriority = pf === "all" || task.priority === pf;
+      return matchesText && matchesPriority;
+    }
+
+    function taskCard(task) {
+      const article = document.createElement("article");
+      article.className = "task";
+      article.draggable = true;
+      article.dataset.id = task.id;
+      article.innerHTML = `
+        <div class="task-head">
+          <strong>${task.title}</strong>
+          <span class="pill p-${task.priority}">${task.priority}</span>
+        </div>
+        <small>Owner: ${task.owner}</small>
+        <div class="task-actions">
+          <button data-action="prev" title="Move left">◀</button>
+          <button data-action="next" title="Move right">▶</button>
+          <button class="done" data-action="done">Mark done</button>
+          <button class="delete" data-action="delete">Delete</button>
+        </div>
+      `;
+      return article;
+    }
+
+    function render() {
+      boardEl.innerHTML = "";
+      for (const col of columns) {
+        const section = document.createElement("section");
+        section.className = "col";
+        section.dataset.column = col.id;
+
+        const tasks = state.filter((t) => t.column === col.id && taskMatches(t));
+        const head = document.createElement("div");
+        head.className = "col-head";
+        head.innerHTML = `<h2>${col.label}</h2><span class="count">${tasks.length}</span>`;
+        section.appendChild(head);
+
+        for (const task of tasks) {
+          section.appendChild(taskCard(task));
+        }
+
+        boardEl.appendChild(section);
+      }
+    }
+
+    function moveTask(task, direction) {
+      const index = columns.findIndex((c) => c.id === task.column);
+      const nextIndex = index + direction;
+      if (nextIndex < 0 || nextIndex >= columns.length) return;
+      task.column = columns[nextIndex].id;
+    }
+
+    document.getElementById("taskForm").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const title = document.getElementById("title").value.trim();
+      const owner = document.getElementById("owner").value.trim();
+      const priority = document.getElementById("priority").value;
+      if (!title || !owner) return;
+
+      state.unshift({ id: crypto.randomUUID(), title, owner, priority, column: "todo" });
+      event.target.reset();
+      save();
+      render();
+    });
+
+    [searchEl, priorityFilterEl].forEach((el) => el.addEventListener("input", render));
+
+    boardEl.addEventListener("click", (event) => {
+      const btn = event.target.closest("button[data-action]");
+      if (!btn) return;
+      const taskEl = event.target.closest(".task");
+      const task = state.find((t) => t.id === taskEl?.dataset.id);
+      if (!task) return;
+
+      const action = btn.dataset.action;
+      if (action === "prev") moveTask(task, -1);
+      if (action === "next") moveTask(task, 1);
+      if (action === "done") task.column = "done";
+      if (action === "delete") state = state.filter((t) => t.id !== task.id);
+
+      save();
+      render();
+    });
+
+    boardEl.addEventListener("dragstart", (event) => {
       const task = event.target.closest(".task");
       if (!task) return;
-      dragged = task;
+      draggedId = task.dataset.id;
       event.dataTransfer.effectAllowed = "move";
     });
 
-    document.addEventListener("dragend", () => {
-      dragged = null;
+    boardEl.addEventListener("dragend", () => {
+      draggedId = null;
       document.querySelectorAll(".col").forEach((col) => col.classList.remove("drag-over"));
     });
 
-    document.querySelectorAll(".col").forEach((col) => {
-      col.addEventListener("dragover", (event) => {
-        event.preventDefault();
-        col.classList.add("drag-over");
-      });
-
-      col.addEventListener("dragleave", () => {
-        col.classList.remove("drag-over");
-      });
-
-      col.addEventListener("drop", (event) => {
-        event.preventDefault();
-        col.classList.remove("drag-over");
-        if (!dragged) return;
-        col.appendChild(dragged);
-      });
+    boardEl.addEventListener("dragover", (event) => {
+      const col = event.target.closest(".col");
+      if (!col) return;
+      event.preventDefault();
+      col.classList.add("drag-over");
     });
+
+    boardEl.addEventListener("dragleave", (event) => {
+      const col = event.target.closest(".col");
+      if (!col) return;
+      col.classList.remove("drag-over");
+    });
+
+    boardEl.addEventListener("drop", (event) => {
+      const col = event.target.closest(".col");
+      if (!col || !draggedId) return;
+      event.preventDefault();
+      col.classList.remove("drag-over");
+      const task = state.find((t) => t.id === draggedId);
+      if (!task) return;
+      task.column = col.dataset.column;
+      save();
+      render();
+    });
+
+    render();
   </script>
 </body>
 </html>
