@@ -29,6 +29,10 @@
       scroll-behavior: smooth;
     }
 
+    section[id] {
+      scroll-margin-top: 5.5rem;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
@@ -103,14 +107,14 @@
     /* Responsive grid: 3 cols on mobile → 5 on sm+ */
     .skills-list {
       display: grid;
-      grid-template-columns: repeat(3, auto);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       list-style: none;
       padding: 0;
       margin: 0;
       gap: 0.5rem;
     }
     @media (min-width: 640px) {
-      .skills-list { grid-template-columns: repeat(5, auto); }
+      .skills-list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
     }
 
     .skill-btn {
@@ -320,6 +324,16 @@
 
     .group:hover .group-hover\:bg-indigo-500\/20 { background-color: rgba(99, 102, 241, 0.2); }
 
+
+    a:focus-visible,
+    button:focus-visible,
+    .btn:focus-visible,
+    .menu li a:focus-visible {
+      outline: 2px solid #818cf8;
+      outline-offset: 2px;
+      border-radius: 0.5rem;
+    }
+
     .navbar {
       display: flex;
       align-items: center;
@@ -398,6 +412,20 @@
       background-color: transparent;
       border-color: #6b7280;
       color: #d1d5db;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      margin-top: 1.1rem;
+    }
+    .quality-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    @media (min-width: 768px) {
+      .quality-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
     .btn-dash {
       background-color: transparent;
@@ -622,17 +650,18 @@
     <div class="navbar-start">
       <div class="dropdown">
         <!-- Hamburger button: visible on mobile/tablet, hidden on lg+ -->
-        <div tabindex="0" role="button" aria-label="Open menu" class="btn btn-ghost lg:hidden">
+        <button type="button" aria-label="Open menu" class="btn btn-ghost lg:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
           </svg>
-        </div>
+        </button>
         <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
           <li><a href="#profile">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#experience">Experience</a></li>
+          <li><a href="#quality">Quality</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
@@ -645,6 +674,7 @@
         <li><a href="#skills" class="hover:text-indigo-400 transition-colors">Skills</a></li>
         <li><a href="#projects" class="hover:text-indigo-400 transition-colors">Projects</a></li>
         <li><a href="#experience" class="hover:text-indigo-400 transition-colors">Experience</a></li>
+        <li><a href="#quality" class="hover:text-indigo-400 transition-colors">Quality</a></li>
         <li><a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a></li>
       </ul>
     </div>
@@ -689,11 +719,7 @@
           </div>
 
           <h1 class="hero-title">
-            Hi, I&apos;m Thandululo
-          </h1>
-
-          <h1 class="hero-title">
-            Nengovhela
+            Hi, I&apos;m Thandululo Nengovhela
           </h1>
 
           <p class="role-title">
@@ -702,21 +728,24 @@
 
           <span class="text-rotate">
             <span>
-              <span class="text">I'm a Web developer building clean, responsive, high-performance applications. I use React and Next.js, turning
-                designs into scalable code. With 4 years experience of delivering scalable solutions at a young age.</span>
-            
+              <span class="text">I build production-ready web apps with React, Next.js, and Firebase. Over the last 4 years, I've shipped 15+ projects with a focus on clean UX, performance, and maintainable architecture.</span>
             </span>
-            </span>
+          </span>
 
-            <span class="skills-container">
-              <ul class="skills-list">
-                <li class="skill-btn">React.Js</li>
-                <li class="skill-btn">Next.Js</li>
-                <li class="skill-btn">Figma</li>
-                <li class="skill-btn">JAVA</li>
-                <li class="skill-btn">Firebase</li>
-              </ul>
-            </span>
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary btn-sm">View Case Studies</a>
+            <a href="assets/Thandululo-Nengovhela-CV.txt" class="btn btn-outline btn-sm" download>Download CV</a>
+          </div>
+
+          <span class="skills-container">
+            <ul class="skills-list">
+              <li class="skill-btn">React.Js</li>
+              <li class="skill-btn">Next.Js</li>
+              <li class="skill-btn">Figma</li>
+              <li class="skill-btn">JAVA</li>
+              <li class="skill-btn">Firebase</li>
+            </ul>
+          </span>
 
         </div>
 
@@ -945,7 +974,7 @@
           <p class="text-gray-400 text-sm">A full-featured online store with user authentication, real-time inventory management, and Stripe payment integration.</p>
           <div class="card-actions justify-start mt-4 gap-2">
             <a href="projects/ecommerce-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-            <a href="projects/ecommerce-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Project</a>
+            <a href="projects/index.html#ecommerce-case" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Case Study</a>
           </div>
         </div>
       </div>
@@ -968,7 +997,7 @@
           <p class="text-gray-400 text-sm">A messaging application with WebSocket support, typing indicators, read receipts, and media sharing capabilities.</p>
           <div class="card-actions justify-start mt-4 gap-2">
             <a href="projects/chat-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-            <a href="projects/chat-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Project</a>
+            <a href="projects/index.html#chat-case" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Case Study</a>
           </div>
         </div>
       </div>
@@ -991,7 +1020,7 @@
           <p class="text-gray-400 text-sm">A Kanban-style project management tool with drag-and-drop, team collaboration, and analytics dashboards.</p>
           <div class="card-actions justify-start mt-4 gap-2">
             <a href="projects/task-dashboard-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-            <a href="projects/task-dashboard-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Project</a>
+            <a href="projects/index.html#kanban-case" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Case Study</a>
           </div>
         </div>
       </div>
@@ -1033,6 +1062,46 @@
         </p>
       </article>
 
+    </div>
+  </section>
+
+
+  <!-- Engineering Quality Section -->
+  <section id="quality" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 md:py-16 lg:py-20">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Engineering Quality</h2>
+    <div class="w-16 h-1 bg-indigo-500 rounded mb-6 sm:mb-8"></div>
+    <p class="text-gray-300 text-sm sm:text-base mb-6">I treat every project as production software: measurable performance, accessibility-first interfaces, and reliable delivery workflows.</p>
+    <div class="quality-grid">
+      <article class="card bg-base-200/50 border border-gray-700/50">
+        <div class="card-body">
+          <h3 class="card-title text-white">Testing & Reliability</h3>
+          <p class="text-gray-400 text-sm">Manual QA scenarios, edge-case validation, and regression checks for forms, carts, and dashboard state changes.</p>
+          <div class="card-actions gap-2 mt-3">
+            <span class="badge badge-success">QA Scenarios</span>
+            <span class="badge badge-ghost">Regression</span>
+          </div>
+        </div>
+      </article>
+      <article class="card bg-base-200/50 border border-gray-700/50">
+        <div class="card-body">
+          <h3 class="card-title text-white">Accessibility</h3>
+          <p class="text-gray-400 text-sm">Visible keyboard focus, semantic HTML controls, and responsive layouts that remain usable across breakpoints and input methods.</p>
+          <div class="card-actions gap-2 mt-3">
+            <span class="badge badge-primary">Keyboard First</span>
+            <span class="badge badge-ghost">Semantic Markup</span>
+          </div>
+        </div>
+      </article>
+      <article class="card bg-base-200/50 border border-gray-700/50">
+        <div class="card-body">
+          <h3 class="card-title text-white">Performance & Delivery</h3>
+          <p class="text-gray-400 text-sm">Optimized UI assets, lazy-loaded visuals, and deployment-ready demos with persistent client-side state for realistic product behavior.</p>
+          <div class="card-actions gap-2 mt-3">
+            <span class="badge badge-warning">Performance</span>
+            <span class="badge badge-ghost">Deployment Ready</span>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 

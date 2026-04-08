@@ -1,0 +1,36 @@
+Thandululo Nengovhela
+Full Stack Developer
+
+Location: South Africa
+Email: thandululo.dev@gmail.com
+LinkedIn: https://linkedin.com/in/thandululo-nengovhela
+GitHub: https://github.com/ThandululoNengovhela
+
+Profile
+- Full Stack Developer with 4+ years of hands-on experience building responsive, scalable web applications.
+- Focused on React, Next.js, Firebase, and Java-based backend fundamentals.
+- Strong interest in clean UI/UX, performance optimization, and maintainable architecture.
+
+Core Skills
+- Frontend: React.js, Next.js, JavaScript, TypeScript, TailwindCSS
+- Backend & Data: Firebase, Java, Node.js (fundamentals)
+- Tooling: Git, Figma
+
+Selected Work
+1) E-Commerce Platform Demo
+   - Implemented search/filter, cart quantity controls, promo handling, VAT/shipping totals, and local persistence.
+2) Real-Time Chat Demo
+   - Built multi-channel messaging UI with history persistence, search, quick templates, and contextual bot responses.
+3) Task Management Dashboard Demo
+   - Delivered a Kanban board with task creation, priority/owner metadata, drag-and-drop workflow, and saved state.
+
+Experience
+- Full Stack Developer (Freelance / Self-Employed), 2024–Present
+- Frontend Developer (Tech Startup), 2023–2024
+- Junior Developer (University Projects & Internship), 2022–2023
+
+Education
+- Available on request.
+
+References
+- Available on request.
