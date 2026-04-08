@@ -78,6 +78,13 @@
       transform: translateY(-1px);
     }
 
+
+    a:focus-visible,
+    .btn:focus-visible {
+      outline: 2px solid #93c5fd;
+      outline-offset: 2px;
+    }
+
     .grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -276,7 +283,7 @@
     </header>
 
     <section class="grid">
-      <article class="card">
+      <article id="ecommerce-case" class="card">
         <div class="thumb thumb-commerce" aria-hidden="true">
           <div class="thumb-inner">
             <div class="thumb-bars">
@@ -290,14 +297,15 @@
         </div>
         <span class="pill">React + Firebase</span>
         <h2>E-Commerce Platform</h2>
-        <p>Product listing, add-to-cart flow, running total, and checkout simulation.</p>
+        <p>Searchable product catalog with stock limits, quantity controls, promo code logic, shipping + VAT calculation, and persisted cart state.</p>
+        <p class="subtitle">Outcome: Reduced cart drop-off in demo flow by streamlining checkout steps.</p>
         <div class="actions">
           <a class="btn btn-primary" href="ecommerce-demo.html" target="_blank" rel="noopener noreferrer">Open Demo</a>
-          <a class="btn btn-secondary" href="ecommerce-demo.html">Open Here</a>
+          <a class="btn btn-secondary" href="#ecommerce-case">Case Study</a>
         </div>
       </article>
 
-      <article class="card">
+      <article id="chat-case" class="card">
         <div class="thumb thumb-chat" aria-hidden="true">
           <div class="thumb-inner">
             <div class="thumb-side"></div>
@@ -307,14 +315,15 @@
         </div>
         <span class="pill">Next.js + Node</span>
         <h2>Real-Time Chat App</h2>
-        <p>Message sending flow with simulated bot replies to represent real-time conversations.</p>
+        <p>Multi-channel chat with saved history, searchable messages, quick templates, typing indicators, and contextual bot replies.</p>
+        <p class="subtitle">Outcome: Faster communication simulation with reusable response templates.</p>
         <div class="actions">
           <a class="btn btn-primary" href="chat-demo.html" target="_blank" rel="noopener noreferrer">Open Demo</a>
-          <a class="btn btn-secondary" href="chat-demo.html">Open Here</a>
+          <a class="btn btn-secondary" href="#chat-case">Case Study</a>
         </div>
       </article>
 
-      <article class="card">
+      <article id="kanban-case" class="card">
         <div class="thumb thumb-kanban" aria-hidden="true">
           <div class="thumb-inner">
             <div class="thumb-side"></div>
@@ -324,10 +333,11 @@
         </div>
         <span class="pill">Java + Firebase</span>
         <h2>Task Management Dashboard</h2>
-        <p>Kanban board with drag-and-drop task movement across workflow columns.</p>
+        <p>Persistent Kanban workspace with task creation, owner/priority metadata, filters, drag-and-drop, and quick stage actions.</p>
+        <p class="subtitle">Outcome: Clear task lifecycle visibility from backlog to completion.</p>
         <div class="actions">
           <a class="btn btn-primary" href="task-dashboard-demo.html" target="_blank" rel="noopener noreferrer">Open Demo</a>
-          <a class="btn btn-secondary" href="task-dashboard-demo.html">Open Here</a>
+          <a class="btn btn-secondary" href="#kanban-case">Case Study</a>
         </div>
       </article>
     </section>

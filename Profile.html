@@ -29,20 +29,21 @@
       scroll-behavior: smooth;
     }
 
+    section[id] {
+      scroll-margin-top: 5.5rem;
+    }
+
     body {
       margin: 0;
       min-height: 100vh;
       font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
 
 
-      background-color: #0f0f0f;
-
-
+      background-color: #050505;
       background-image:
-        radial-gradient(circle at top left, rgba(255, 255, 255, 0.05) 30%, transparent 31%),
-        radial-gradient(circle at bottom right, rgba(255, 255, 255, 0.05) 30%, transparent 31%);
-
-      background-size: 6em 6em;
+        radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.08) 0 34%, transparent 35%),
+        radial-gradient(circle at 100% 100%, rgba(255, 255, 255, 0.08) 0 34%, transparent 35%);
+      background-size: 9rem 9rem;
 
     }
 
@@ -52,19 +53,19 @@
       font-weight: 700;
       line-height: 1.2;
       font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
-      font-size: 1.75rem;           /* Mobile: ~28px */
+      font-size: 2.15rem;
       animation: fadeUp 0.6s ease-out both;
       color: aliceblue;
       word-break: break-word;       /* Prevent text overflow on small screens */
     }
     @media (min-width: 640px) {
-      .hero-title { font-size: 2rem; }      /* sm: 32px */
+      .hero-title { font-size: 2.7rem; }
     }
     @media (min-width: 768px) {
-      .hero-title { font-size: 2.25rem; }   /* md: 36px */
+      .hero-title { font-size: 3.5rem; }
     }
     @media (min-width: 1024px) {
-      .hero-title { font-size: 2.45rem; }   /* lg: original size */
+      .hero-title { font-size: 4.25rem; }
     }
 
     .role-title {
@@ -103,14 +104,14 @@
     /* Responsive grid: 3 cols on mobile → 5 on sm+ */
     .skills-list {
       display: grid;
-      grid-template-columns: repeat(3, auto);
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       list-style: none;
       padding: 0;
       margin: 0;
       gap: 0.5rem;
     }
     @media (min-width: 640px) {
-      .skills-list { grid-template-columns: repeat(5, auto); }
+      .skills-list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
     }
 
     .skill-btn {
@@ -320,6 +321,24 @@
 
     .group:hover .group-hover\:bg-indigo-500\/20 { background-color: rgba(99, 102, 241, 0.2); }
 
+
+    a:focus-visible,
+    button:focus-visible,
+    .btn:focus-visible,
+    .menu li a:focus-visible {
+      outline: 2px solid #818cf8;
+      outline-offset: 2px;
+      border-radius: 0.5rem;
+    }
+
+
+    .nav-link {
+      color: #e5e7eb;
+      font-weight: 500;
+      padding: 0.35rem 0.6rem;
+      border-radius: 0.5rem;
+    }
+    .nav-link:hover { color: #ffffff; background: rgba(255,255,255,0.06); }
     .navbar {
       display: flex;
       align-items: center;
@@ -399,10 +418,27 @@
       border-color: #6b7280;
       color: #d1d5db;
     }
+    .quality-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    @media (min-width: 768px) {
+      .quality-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
     .btn-dash {
       background-color: transparent;
       border: 1px dashed #6366f1;
     }
+
+    .talk-btn {
+      background: #171717;
+      border: 1px solid #2b2b2b;
+      color: #f5f5f5;
+      border-radius: 0.9rem;
+      padding: 0.55rem 1rem;
+    }
+    .talk-btn:hover { background: #202020; }
 
     .avatar img {
       width: 100%;
@@ -622,34 +658,29 @@
     <div class="navbar-start">
       <div class="dropdown">
         <!-- Hamburger button: visible on mobile/tablet, hidden on lg+ -->
-        <div tabindex="0" role="button" aria-label="Open menu" class="btn btn-ghost lg:hidden">
+        <button type="button" aria-label="Open menu" class="btn btn-ghost lg:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16" />
           </svg>
-        </div>
+        </button>
         <ul tabindex="0" class="menu menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow">
           <li><a href="#profile">Home</a></li>
           <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Content</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
-      <a href="#profile" class="btn btn-ghost text-xl text-indigo-400 font-bold">TN<span class="text-white">.</span></a>
+      <a href="#profile" class="btn btn-ghost text-xl text-white font-bold">Thandululo Nengovhela</a>
     </div>
     <div class="navbar-center hidden lg:flex">
       <ul class="menu menu-horizontal px-1 gap-1">
-        <li><a href="#profile" class="hover:text-indigo-400 transition-colors">Home</a></li>
-        <li><a href="#about" class="hover:text-indigo-400 transition-colors">About</a></li>
-        <li><a href="#skills" class="hover:text-indigo-400 transition-colors">Skills</a></li>
-        <li><a href="#projects" class="hover:text-indigo-400 transition-colors">Projects</a></li>
-        <li><a href="#experience" class="hover:text-indigo-400 transition-colors">Experience</a></li>
-        <li><a href="#contact" class="hover:text-indigo-400 transition-colors">Contact</a></li>
+        <li><a href="#about" class="nav-link transition-colors">About</a></li>
+        <li><a href="#projects" class="nav-link transition-colors">Content ▾</a></li>
+        <li><a href="#contact" class="nav-link transition-colors">Contact</a></li>
       </ul>
     </div>
     <div class="navbar-end">
-      <a href="#contact" class="btn btn-primary btn-sm">Hire Me</a>
+      <a href="#contact" class="btn btn-sm talk-btn">Let’s Talk</a>
     </div>
   </nav>
 
@@ -689,11 +720,7 @@
           </div>
 
           <h1 class="hero-title">
-            Hi, I&apos;m Thandululo
-          </h1>
-
-          <h1 class="hero-title">
-            Nengovhela
+            Hi, I'm Thandululo <br/> Nengovhela
           </h1>
 
           <p class="role-title">
@@ -702,21 +729,19 @@
 
           <span class="text-rotate">
             <span>
-              <span class="text">I'm a Web developer building clean, responsive, high-performance applications. I use React and Next.js, turning
-                designs into scalable code. With 4 years experience of delivering scalable solutions at a young age.</span>
-            
+              <span class="text">I'm a Web developer building clean, responsive, high-performance applications. I use React and Next.js, turning designs into scalable code. With 4 years experience of delivering scalable solutions.</span>
             </span>
-            </span>
+          </span>
 
-            <span class="skills-container">
-              <ul class="skills-list">
-                <li class="skill-btn">React.Js</li>
-                <li class="skill-btn">Next.Js</li>
-                <li class="skill-btn">Figma</li>
-                <li class="skill-btn">JAVA</li>
-                <li class="skill-btn">Firebase</li>
-              </ul>
-            </span>
+          <span class="skills-container">
+            <ul class="skills-list">
+              <li class="skill-btn">React.Js</li>
+              <li class="skill-btn">Next.Js</li>
+              <li class="skill-btn">Figma</li>
+              <li class="skill-btn">JAVA</li>
+              <li class="skill-btn">Firebase</li>
+            </ul>
+          </span>
 
         </div>
 
@@ -945,7 +970,7 @@
           <p class="text-gray-400 text-sm">A full-featured online store with user authentication, real-time inventory management, and Stripe payment integration.</p>
           <div class="card-actions justify-start mt-4 gap-2">
             <a href="projects/ecommerce-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-            <a href="projects/ecommerce-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Project</a>
+            <a href="projects/index.html#ecommerce-case" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Case Study</a>
           </div>
         </div>
       </div>
@@ -968,7 +993,7 @@
           <p class="text-gray-400 text-sm">A messaging application with WebSocket support, typing indicators, read receipts, and media sharing capabilities.</p>
           <div class="card-actions justify-start mt-4 gap-2">
             <a href="projects/chat-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-            <a href="projects/chat-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Project</a>
+            <a href="projects/index.html#chat-case" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Case Study</a>
           </div>
         </div>
       </div>
@@ -991,7 +1016,7 @@
           <p class="text-gray-400 text-sm">A Kanban-style project management tool with drag-and-drop, team collaboration, and analytics dashboards.</p>
           <div class="card-actions justify-start mt-4 gap-2">
             <a href="projects/task-dashboard-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">Live Demo</a>
-            <a href="projects/task-dashboard-demo.html" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">View Project</a>
+            <a href="projects/index.html#kanban-case" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">Case Study</a>
           </div>
         </div>
       </div>
@@ -1033,6 +1058,46 @@
         </p>
       </article>
 
+    </div>
+  </section>
+
+
+  <!-- Engineering Quality Section -->
+  <section id="quality" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 py-12 md:py-16 lg:py-20">
+    <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">Engineering Quality</h2>
+    <div class="w-16 h-1 bg-indigo-500 rounded mb-6 sm:mb-8"></div>
+    <p class="text-gray-300 text-sm sm:text-base mb-6">I treat every project as production software: measurable performance, accessibility-first interfaces, and reliable delivery workflows.</p>
+    <div class="quality-grid">
+      <article class="card bg-base-200/50 border border-gray-700/50">
+        <div class="card-body">
+          <h3 class="card-title text-white">Testing & Reliability</h3>
+          <p class="text-gray-400 text-sm">Manual QA scenarios, edge-case validation, and regression checks for forms, carts, and dashboard state changes.</p>
+          <div class="card-actions gap-2 mt-3">
+            <span class="badge badge-success">QA Scenarios</span>
+            <span class="badge badge-ghost">Regression</span>
+          </div>
+        </div>
+      </article>
+      <article class="card bg-base-200/50 border border-gray-700/50">
+        <div class="card-body">
+          <h3 class="card-title text-white">Accessibility</h3>
+          <p class="text-gray-400 text-sm">Visible keyboard focus, semantic HTML controls, and responsive layouts that remain usable across breakpoints and input methods.</p>
+          <div class="card-actions gap-2 mt-3">
+            <span class="badge badge-primary">Keyboard First</span>
+            <span class="badge badge-ghost">Semantic Markup</span>
+          </div>
+        </div>
+      </article>
+      <article class="card bg-base-200/50 border border-gray-700/50">
+        <div class="card-body">
+          <h3 class="card-title text-white">Performance & Delivery</h3>
+          <p class="text-gray-400 text-sm">Optimized UI assets, lazy-loaded visuals, and deployment-ready demos with persistent client-side state for realistic product behavior.</p>
+          <div class="card-actions gap-2 mt-3">
+            <span class="badge badge-warning">Performance</span>
+            <span class="badge badge-ghost">Deployment Ready</span>
+          </div>
+        </div>
+      </article>
     </div>
   </section>
 
