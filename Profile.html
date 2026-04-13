@@ -49,27 +49,27 @@
 
     /* Responsive hero title: scales from mobile → desktop */
     .hero-title {
-      margin-top: 0.5rem;
+      margin: 0.35rem 0 0;
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.1;
       font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
-      font-size: 2.15rem;
+      font-size: 2rem;
       animation: fadeUp 0.6s ease-out both;
       color: aliceblue;
       word-break: break-word;       /* Prevent text overflow on small screens */
     }
     @media (min-width: 640px) {
-      .hero-title { font-size: 2.7rem; }
+      .hero-title { font-size: 2.5rem; }
     }
     @media (min-width: 768px) {
-      .hero-title { font-size: 3.5rem; }
+      .hero-title { font-size: 3.1rem; }
     }
     @media (min-width: 1024px) {
-      .hero-title { font-size: 4.25rem; }
+      .hero-title { font-size: 3.65rem; }
     }
 
     .role-title {
-      
+      margin: 0.2rem 0 0;
       font-weight: 700;
       color: #7c3aed;
       font-size: 1rem;              /* Mobile: 16px */
@@ -96,7 +96,7 @@
     .skills-container {
       display: block;
       max-width: 100%;              /* Full width on mobile */
-      margin-top: 1.1rem;
+      margin-top: 0.75rem;
     }
     @media (min-width: 640px) {
       .skills-container { max-width: 20rem; }
@@ -432,11 +432,28 @@
       border-color: #6b7280;
       color: #d1d5db;
     }
-    .hero-actions {
+    .hero-columns { align-items: center; }
+
+    .hero-left-stack {
       display: flex;
-      flex-wrap: wrap;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      min-width: 0;
+      max-width: 36rem;
+    }
+    .hero-right-stack { min-width: 0; }
+
+    .hero-actions {
+      display: grid;
+      grid-template-columns: 1fr;
       gap: 0.65rem;
-      margin-top: 1.1rem;
+      margin-top: 0.8rem;
+      width: min(100%, 20rem);
+    }
+    .hero-actions .btn {
+      width: 100%;
+      justify-content: center;
     }
     .quality-grid {
       display: grid;
@@ -634,6 +651,11 @@
       .sm\:gap-4 { gap: 1rem; }
       .sm\:gap-6 { gap: 1.5rem; }
       .sm\:stats-horizontal { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .hero-actions {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: fit-content;
+      }
+      .hero-actions .btn { width: auto; }
     }
 
     @media (min-width: 768px) {
@@ -647,6 +669,8 @@
       .md\:grid-cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
       .md\:gap-10 { gap: 2.5rem; }
       .md\:stats-vertical { grid-template-columns: 1fr; }
+      .hero-columns { align-items: stretch; }
+      .hero-left-stack { align-items: flex-start; }
     }
 
     @media (min-width: 1024px) {
@@ -720,11 +744,11 @@
     <!--main content - responsive padding: tight on mobile, wider on desktop -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 pt-10 sm:pt-12 md:pt-16">
       <!-- Responsive gap: smaller on mobile (gap-8) → larger on desktop (gap-14) -->
-      <div class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-10 lg:gap-14">
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-10 lg:gap-14 hero-columns">
 
 
         <!--Left column: takes full width on mobile, half on md+ -->
-        <div class="flex-1 w-full text-center md:text-left animate-left">
+        <div class="flex-1 w-full text-center md:text-left animate-left hero-left-stack">
           <!-- Avatar + badge: stacks on mobile (flex-col), inline on sm+ (sm:flex-row) -->
           <div class="avatar flex flex-col sm:flex-row items-center justify-center md:justify-start mb-4 sm:mb-6 gap-3 sm:gap-0">
             <!-- Profile image: smaller on mobile (w-24), larger on sm+ (w-32) -->
@@ -779,7 +803,7 @@
         </div>
 
         <!-- Right column: GitHub graph visible on all screens, stacks below on mobile -->
-        <div class="flex-1 w-full max-w-xl animate-right">
+        <div class="flex-1 w-full max-w-xl animate-right hero-right-stack">
           <!-- Responsive padding: p-4 on mobile, p-6 on sm+ -->
           <div class="rounded-xl border border-gray-700 bg-gray-900/30 p-4 sm:p-6 backdrop-blur-sm">
               <a
