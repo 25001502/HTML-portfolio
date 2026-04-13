@@ -164,7 +164,7 @@
     <form id="taskForm" class="toolbar">
       <input id="title" placeholder="Task title (e.g. Build billing page)" required />
       <input id="owner" placeholder="Assignee" required />
-      <select id="priority">
+      <select id="priority" aria-label="Task priority" title="Task priority">
         <option value="high">High Priority</option>
         <option value="medium" selected>Medium Priority</option>
         <option value="low">Low Priority</option>
@@ -174,7 +174,7 @@
 
     <div class="filters">
       <input id="search" placeholder="Filter tasks by title or owner" />
-      <select id="priorityFilter">
+      <select id="priorityFilter" aria-label="Filter by priority" title="Filter by priority">
         <option value="all">All priorities</option>
         <option value="high">High</option>
         <option value="medium">Medium</option>

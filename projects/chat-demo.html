@@ -72,6 +72,11 @@
       flex-wrap: wrap;
     }
     .status { display: inline-flex; align-items: center; gap: 0.35rem; color: var(--muted); font-size: 0.8rem; }
+    .back-link {
+      color: #93c5fd;
+      text-decoration: none;
+    }
+    .back-link:hover { color: #bfdbfe; }
     .dot {
       width: 8px;
       height: 8px;
@@ -194,7 +199,7 @@
           <strong id="roomTitle"># general</strong>
           <div class="status"><span class="dot"></span><span id="presence">3 members online</span></div>
         </div>
-        <a href="../Profile.html" style="color:#93c5fd;text-decoration:none;">Back to Portfolio</a>
+        <a href="../Profile.html" class="back-link">Back to Portfolio</a>
       </header>
 
       <div class="toolbar">
