@@ -51,6 +51,7 @@ The portfolio includes the following sections:
 ### 1️⃣ Live Website
 Visit the deployed portfolio here:  
 **[nengovhela.me](https://nengovhela.me)**
+or run a live server from the file Profile.html
 
 ### 2️⃣ Run Locally
 Clone this repository:
