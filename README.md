@@ -57,4 +57,4 @@ or run a live server from the file Profile.html
 Clone this repository:
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
+git clone https://github.com/25001502/HTML-portfolio.git
